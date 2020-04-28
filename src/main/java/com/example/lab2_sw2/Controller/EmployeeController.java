@@ -32,7 +32,12 @@ public class EmployeeController {
     @GetMapping("/lista")
     public String listarEmployees(Model model) {
         List<EmployeeEntity> listaEmp = employeeRepository.findAll();
+        List<JobsEntity> listajob = jobsRepository.findAll();
+
         model.addAttribute("lista", listaEmp);
+        model.addAttribute("listajob",listajob);
+        
+
         return "employee/listar";
     }
 
