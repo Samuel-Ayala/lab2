@@ -59,7 +59,7 @@ public class JobsController {
         if (opt.isPresent()) {
             JobsEntity job = opt.get();
             model.addAttribute("job", job);
-            return "job/editForm";
+            return "job/editJob";
         } else {
             return "redirect:/job";
 
