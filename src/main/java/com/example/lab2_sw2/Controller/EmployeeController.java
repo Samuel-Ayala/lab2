@@ -5,7 +5,7 @@ import com.example.lab2_sw2.Entity.EmployeeEntity;
 import com.example.lab2_sw2.Entity.JobsEntity;
 import com.example.lab2_sw2.Repository.DepartmentRepository;
 import com.example.lab2_sw2.Repository.EmployeeRepository;
-import com.example.lab2_sw2.Repository.JobsRepository;
+import com.example.lab2_sw2.Repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +25,7 @@ public class EmployeeController {
     @Autowired
     EmployeeRepository employeeRepository;
     @Autowired
-    JobsRepository jobsRepository;
+    JobRepository jobsRepository;
     @Autowired
     DepartmentRepository departmentRepository;
 
