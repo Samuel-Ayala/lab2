@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Orden</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+</head>
+<body class="container">
+<h2>Editar trbajo</h2><hr />
+<form method="post" th:action="@{'/job/guardar'}">
+    <input type="hidden" name="id" th:value="${job.getJob_id()}">
+    <div class="form-group">
+        <label for="jobtittle">Trabajo</label>
+        <input th:value="${job.getJob_tittle()}" name="jobtittle" type="text" class="form-control" id="jobtittle">
+    </div>
+    <div class="form-group">
+        <label for="min_salary">Salario minimo</label>
+        <input th:value="${job.getMin_salary()} "name="min_salary" type="text" class="form-control" id="min_salary">
+    </div>
+
+    <div class="form-group">
+        <label for="max_salary">Salario maximo</label>
+        <input th:value="${job.getMax_salary()}" name="max_salary" type="text" class="form-control" id="max_salary">
+    </div>
+
+
+
+    <a th:href="@{'/job/listar'}" class="btn btn-danger">Cancelar</a>
+    <button type="submit" class="btn btn-primary">Registrar</button>
+</form>
+</body>
+</html>
