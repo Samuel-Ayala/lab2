@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Jobs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+</head>
+
+<body>
+<h1>Lista de trabajos</h1>
+<a th:href="@{/job/nuevo}">Crear una nueva orden</a>
+<form method="post" th:action="@{/job/BuscarTrabajo}">
+    <input name="salario" class="form-control mb-3" type="text" placeholder="Search" aria-label="Search">
+</form>
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>ID</th>
+        <th>Nombre del trabajo</th>
+        <th>Rango de salarios</th>
+        <th></th>
+        <th></th>
+
+
+    </tr>
+    <tr th:each="job,i : ${listaJob}">
+        <td th:text="${job.getJob_id()}">Pepsi</td>
+        <td th:text="${job.getJob_tittle()}">Pepsi</td>
+        <td th:text="${job.getMin_salary() +  'a' + job.getMax_salary()}">100</td>
+        <td><a th:href="@{'/orden/editar?id=' + ${job.getJob_id()}}">Editar</a></td>
+        <td><a th:href="@{'/orden/borrar?id=' + ${job.getJob_id()}}">Borrar</a></td>
+    </tr>
+</table>
+
+</body>
+</html>
