@@ -17,6 +17,7 @@
 
 <form method="post" th:action="@{/employee/buscar}">
     <input name="searchField" class="form-control mb-3" type="text" placeholder="Search" aria-label="Search">
+
 </form>
 
 <table class="table table-sm">
@@ -27,22 +28,23 @@
         <th>Teléfono</th>
         <th>Trabajo</th>
         <th>Salario</th>
-
-        <th>ID de jefe</th>
-        <th>ID de departamento</th>
+        <th>Jefe</th>
+        <th>Departamento</th>
         <th></th>
         <th></th>
     </tr>
     <tr th:each="emp, i:${lista}"
-        th:each="jobs : ${listajob}">
+        th:each="jobs : ${listajob}"
+        th:each="deps : ${listadep}"
+    >
         <td th:text="${i.index +1}"></td>
         <td th:text="${emp.first_name + ' ' + emp.last_name}"></td>
         <td th:text="${emp.email}"></td>
         <td th:text="${emp.phone_number}"></td>
         <td th:text="${jobs.job_tittle}"></td>
         <td th:text="${emp.salary}"></td>
-        <td th:text="${emp.manager_id==null}? 'Sin jefe' : ${emp.manager_id}"></td>
-        <td th:text="${emp.department_id}"></td>
+        <td th:text="${deps.manager_id}"></td>
+        <td th:text="${deps.department_name}"></td>
         <td><a class="btn btn-primary" th:href="@{'/employee/editar?id=' + ${emp.employee_id}}">Editar</a></td>
         <td><a class="btn btn-danger" th:href="@{'/employee/borrar?id=' + ${emp.employee_id}}">Borrar</a></td>
     </tr>

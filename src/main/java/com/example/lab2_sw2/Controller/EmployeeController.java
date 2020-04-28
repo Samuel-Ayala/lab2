@@ -1,9 +1,9 @@
 package com.example.lab2_sw2.Controller;
 
-import com.example.lab2_sw2.Entity.Department;
+import com.example.lab2_sw2.entity.Departments;
 import com.example.lab2_sw2.Entity.EmployeeEntity;
 import com.example.lab2_sw2.Entity.JobsEntity;
-import com.example.lab2_sw2.Repository.DepartmentRepository;
+import com.example.lab2_sw2.repository.DepartmentRepository;
 import com.example.lab2_sw2.Repository.EmployeeRepository;
 import com.example.lab2_sw2.Repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +33,11 @@ public class EmployeeController {
     public String listarEmployees(Model model) {
         List<EmployeeEntity> listaEmp = employeeRepository.findAll();
         List<JobsEntity> listajob = jobsRepository.findAll();
+        List<Departments> listadep = departmentRepository.findAll();
 
         model.addAttribute("lista", listaEmp);
         model.addAttribute("listajob",listajob);
-        
+        model.addAttribute("listadep",listadep);
 
         return "employee/listar";
     }
@@ -63,7 +64,7 @@ public class EmployeeController {
             EmployeeEntity employee =opt.get();
 
             List<JobsEntity> listaJob = jobsRepository.findAll();
-            List<Department> listaDep = departmentRepository.findAll();
+            List<Departments> listaDep = departmentRepository.findAll();
             List<EmployeeEntity> listaMan = employeeRepository.findAll();
             model.addAttribute("listaJob", listaJob);
             model.addAttribute("listaDep", listaDep);
@@ -81,7 +82,9 @@ public class EmployeeController {
                                  Model model){
 
         List<EmployeeEntity> listaempleados = employeeRepository.findByFirst_name(searchfield);
+
         model.addAttribute("lista1",listaempleados);
+
 
         List<EmployeeEntity> listaempleados2 = employeeRepository.findByLast_name(searchfield2);
         model.addAttribute("lista2",listaempleados2);
