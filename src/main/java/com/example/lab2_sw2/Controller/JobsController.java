@@ -26,11 +26,20 @@ public class JobsController {
     @GetMapping(value = {"","/listar"})
     public String listaJobs(Model model){
         List<JobsEntity> listaJob = jobRepository.findAll();
-        model.addAttribute("lista",listaJob);
-        return "job/lista";
+
+        model.addAttribute("listaJob",listaJob);
+        return "job/listaJob";
 
 
     }
+    @PostMapping("/BuscarJob")
+    public String buscarJob(@RequestParam("salario") int salario , Model model){
+
+        List<JobsEntity> listaJobs = jobRepository.EncontrarSalario(salario);
+        model.addAttribute("jobList", listaJobs);
+        return "job/listaJob";
+    }
+
 
     @GetMapping("/nuevo")
     public String nuevoJob(){
